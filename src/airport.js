@@ -46,12 +46,11 @@ Airport.prototype.isFull = function() {
   }
 };
 Airport.prototype.land = function(plane) {
-  if (airport.isFull) {
-    return "cannot land the plane: airport at capacity!";
-  } else {
-    airport.hanger.push(plane);
-    return plane;
+  if (airport.isFull()) {
+    return;
   }
+  airport.hanger.push(plane);
+  return plane;
 };
 Airport.prototype.takeOff = function(plane) {
   airport.hanger.pop();

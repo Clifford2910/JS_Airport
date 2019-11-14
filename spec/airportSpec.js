@@ -78,7 +78,9 @@ describe('Airport', function() {
   });
 
   it('will not let a plane land when at capacity', function() {
-    expect(airport.land(plane)).toEqual("cannot land the plane: airport at capacity!");
+    for (var i = 0; i < 3; i++) {
+      airport.land(plane)
+    }
+    expect(airport.hanger).toEqual([plane, plane]);
   });
-
 });
