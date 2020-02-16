@@ -15,13 +15,13 @@ describe('Airport', function() {
     });
   });
 
-  describe('Landing', function() {
+  describe('Land', function() {
     it('instructs a plane to land', function() {
       expect(airport.land(plane)).toEqual(plane);
     });
   });
 
-  describe('Landing', function() {
+  describe('takeOff', function() {
     it('instructs a plane to take off', function() {
       expect(airport.takeOff(plane)).toEqual(plane);
     });
