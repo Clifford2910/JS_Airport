@@ -4,10 +4,8 @@ function Plane() {
 
 Plane.prototype.landed = function() {
   plane.airborne = false
-  return plane;
 };
 
 Plane.prototype.inFlight = function() {
   plane.airborne = true
-  return plane;
 };

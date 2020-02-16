@@ -4,14 +4,22 @@ function Airport(defaultCapacity = 20) {
 };
 
 Airport.prototype.land = function(plane) {
-  if (this.isFull()) {
-    throw new Error("cannot land plane: airport is full");
+  if (this.isStormy()) {
+    throw new Error("cannot land the plane: weather is stormy!");
   }
+  if (this.isFull()) {
+    throw new Error("cannot land the plane: airport at capacity!");
+  }
+  plane.landed()
   this.planes.push(plane);
   return plane;
 };
 
 Airport.prototype.takeOff = function(plane) {
+  if (this.isStormy()) {
+    throw new Error("cannot take off: weather is stormy!");
+  }
+  plane.inFlight()
   this.planes.pop();
   return plane;
 };
