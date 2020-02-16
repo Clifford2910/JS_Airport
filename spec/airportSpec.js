@@ -11,7 +11,7 @@ describe('Airport', function() {
     });
 
     it('knows its capacity', function() {
-      expect(airport.capacity).toEqual(2);
+      expect(airport.capacity).toEqual(20);
     });
   });
 
@@ -27,8 +27,21 @@ describe('Airport', function() {
     });
   });
 
+  describe("isStormy", function() {
+    it("makes the weather stormy", function(){
+      spyOn(airport, 'isStormy').and.returnValue(true);
+      expect(airport.isStormy()).toEqual(true);
+    });
+
+    it("makes the weather not stormy", function(){
+      spyOn(airport, 'isStormy').and.returnValue(false);
+      expect(airport.isStormy()).toEqual(false);
+    });
+  });
+
   describe('Capacity', function() {
     it('will not let a plane land when at capacity', function() {
+      airport.capacity = 2
       for (var i = 0; i < 3; i++) {
         airport.land(plane)
       }
