@@ -4,15 +4,15 @@ function Airport(defaultCapacity = 20) {
 };
 
 Airport.prototype.land = function(plane) {
-  if (airport.isFull()) {
-    return;
+  if (this.isFull()) {
+    throw new Error("cannot land plane: airport is full");
   }
-  airport.planes.push(plane);
+  this.planes.push(plane);
   return plane;
 };
 
 Airport.prototype.takeOff = function(plane) {
-  airport.planes.pop();
+  this.planes.pop();
   return plane;
 };
 
@@ -26,7 +26,7 @@ Airport.prototype.isStormy = function() {
 };
 
 Airport.prototype.isFull = function() {
-  if (airport.planes.length >= airport.capacity) {
+  if (this.planes.length >= this.capacity) {
     return true;
   } else {
     return false;

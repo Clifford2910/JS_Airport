@@ -1,7 +1,7 @@
 describe('Airport', function() {
 
   beforeEach(function() {
-    airport = new Airport();
+    airport = new Airport(20);
     plane = new Plane();
   });
 
@@ -41,11 +41,10 @@ describe('Airport', function() {
 
   describe('Capacity', function() {
     it('will not let a plane land when at capacity', function() {
-      airport.capacity = 2
-      for (var i = 0; i < 3; i++) {
+      for (var i = 0; i < 20; i++) {
         airport.land(plane)
       }
-      expect(airport.planes).toEqual([plane, plane]);
+      expect(function() {airport.land(plane)}).toThrowError("cannot land plane: airport is full");
     });
   });
 });
